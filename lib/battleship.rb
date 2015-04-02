@@ -1,7 +1,4 @@
 require_relative 'db'
-require_relative 'player'
-require_relative 'game'
-require_relative 'ship'
 require_relative 'methods'
 require 'pry'
 
@@ -10,21 +7,24 @@ puts "Let's play Battleship!\n"
 while true
 	puts "Enter 1 to play a NEW game."
 	puts "Enter 2 to LOAD an old game."
-	puts "Enter 3 to see past high scores."
+	puts "Enter 3 to see your score and hits."
 	puts "Enter 4 to delete an old game."
 	puts "Enter 5 to quit."
 	user_input = gets().chomp().to_i
 
-
 	case user_input
 		when 1
-			puts "There are two battleships lurking on the board,/n you have to take them both out to win!"
+			game = Game.create
+			puts "There are two battleships lurking on the board, you have to take them both out to win!"
 			puts "What is your player name?"
-			user_input = gets().chomp().to_s
-			# player = Player.new(user_input)
+			user_input = gets().chomp()
+			player = Player.create(name: user_input) ##how to make this go into THAT game above?
 
-			ship1 = ["A1", "A2", "A3", "A4", "A5"]
-			ship2 = ["J11", "K11", "L11", "M11", "N11" ]
+				#These arrays bring out the random ships random ships
+			ship1 = random_array_ship.first.first
+			ship2 = random_array_ship.last.first
+			puts ship1
+			puts ship2
 			ship1_hits = []
 			ship2_hits = []
 			attempts = []
@@ -33,12 +33,14 @@ while true
 			loop do
 				puts board
 				puts "Type in the location on the board you would like to attack. Example: A1"
-				turn = gets().chomp().upcase.to_s
-
+				turn = gets().chomp().upcase
+				puts turn
+						# binding.pry
 					if attempts.include?(turn) == true
 						puts "You've already tried that!"
 					elsif ship1.include?(turn)
 						puts "Hit!"
+						game.update_attribute(hits: turn)
 						ship1_hits << turn
 						attempts << turn
 						puts attempts
@@ -52,23 +54,41 @@ while true
 							puts "    |    |"
 							puts "      /X\\"
 							puts "c----/   \\------>"
+							if ship1_hits.count == 5 && ship2_hits.count == 5
+								puts "You've won!"
+								new_wins = player.wins + 1
+								player.update_attribute(wins: new_wins)
+								break
+							end
 						end
 					elsif ship2.include?(turn)
 						puts "Hit!"
+						game.update_attribute(hits: turn)
 						ship2_hits << turn
 						attempts << turn
 						if ship2_hits.count == 5
 							puts "You sunk my battleship!"
+							puts " _~-~-~-~-~_"
+							puts "/           \\"
+							puts "(            )"
+							puts " -          -"
+							puts "  (        )"
+							puts "    |    |"
+							puts "      /X\\"
+							puts "c----/   \\------>"
+							if ship1_hits.count == 5 && ship2_hits.count == 5
+								puts "You've won!"
+								new_wins = player.wins + 1
+								player.update_attribute(wins: new_wins)
+								break
+							end
 						end
 					elsif turn != ship1.include?(turn) && turn != ship2.include?(turn)
 						puts "Nothing! Try again!"
-
 					end
 			end
-
-		when 2
-			list_all_players
-			list_all_games
+		when 2 #not working
+			Game.list_all_games
 
 		when 3
 		when 4
@@ -79,4 +99,4 @@ while true
 			puts "That is not a valid choice."
 		end
 	end
-binding.pry
+# binding.pry

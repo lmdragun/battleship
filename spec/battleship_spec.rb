@@ -4,7 +4,7 @@ require 'battleship'
 
 describe Player do
 	it "initializes a player" do
-		player = Player.new("Player1")
+		player = Player.create(name: "Player1")
 		expect(player.name).to be("Player1")
 	end
 end
