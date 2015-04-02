@@ -20,7 +20,8 @@ while true
 		when 1
 			puts "There are two battleships lurking on the board,/n you have to take them both out to win!"
 			puts "What is your player name?"
-			player = Player.new(gets.chomp.to_s)
+			user_input = gets().chomp().to_s
+			# player = Player.new(user_input)
 
 			ship1 = ["A1", "A2", "A3", "A4", "A5"]
 			ship2 = ["J11", "K11", "L11", "M11", "N11" ]
@@ -43,14 +44,14 @@ while true
 						puts attempts
 						if ship1_hits.count == 5
 							puts "You sunk my battleship!"
-
-							puts "( ~ )( ~ )"
-							puts "~o~o~o~"
-							puts "--   --"
-							puts "|\\ / |"
-							puts "| | | |"
-							puts "| | | |"
-							puts "( )  --"
+							puts " _~-~-~-~-~_"
+							puts "/           \\"
+							puts "(            )"
+							puts " -          -"
+							puts "  (        )"
+							puts "    |    |"
+							puts "      /X\\"
+							puts "c----/   \\------>"
 						end
 					elsif ship2.include?(turn)
 						puts "Hit!"

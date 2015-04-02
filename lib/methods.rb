@@ -32,3 +32,9 @@ def board
 			puts @board[195..209].join(" ")
 			puts @board[210..224].join(" ")
 	end
+
+def random_ship
+	ship_start = board.sample(1)
+	ship_length = 5
+	
+end

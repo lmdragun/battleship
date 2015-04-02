@@ -31,3 +31,4 @@ class CreateBattleShip < ActiveRecord::Migration
     end
   end
 end
+# binding.pry
