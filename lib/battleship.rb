@@ -14,7 +14,7 @@ while true
 
 	case user_input
 		when 1
-			game = Game.create(attempts: 0, hits: 0)
+			game = Game.create
 			puts "There are two battleships lurking on the board, you have to take them both out to win!"
 			puts "What is your player name?"
 			user_input = gets().chomp()
@@ -31,23 +31,27 @@ while true
 			ship1_hits = []
 			ship2_hits = []
 			attempts = []
+			#game.turns
 			hit = 0
 
 			loop do
 				puts board
 				puts "Type in the location on the board you would like to attack. Example: A1."
-				# puts "Or type Quit to exit."
+				puts "Or type Quit to exit."
 				turn = gets().chomp().upcase
-				puts turn
+				# puts turn
 
 					if attempts.include?(turn) == true
 						puts "You've already tried that!"
-					elsif ship1.include?(turn)
+						# sleep(3)
+					elsif turn == "QUIT"
+						break
+					elsif attempts.include?(turn)
 						puts "Hit!"
-						# game.update_attribute(hits: turn)
+						game.turns.create(hits: true, location: turn)
 						ship1_hits << turn
 						attempts << turn
-						puts attempts
+						# sleep(3)
 						if ship1_hits.count == 5
 							puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -59,9 +63,10 @@ while true
 						end
 					elsif ship2.include?(turn)
 						puts "Hit!"
-						# game.update_attribute(hits: turn)
+						game.turns.create(hits: true, location: turn)
 						ship2_hits << turn
 						attempts << turn
+						# sleep(3)
 						if ship2_hits.count == 5
 								puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -71,10 +76,10 @@ while true
 								puts "One more ship to go!"
 							end
 						end
-					# elsif turn == "QUIT"
-					# 	return
 					elsif turn != ship1.include?(turn) && turn != ship2.include?(turn)
 						puts "Nothing! Try again!"
+						game.turns.create(hits: false, location: turn)
+						# sleep(3)
 					end
 			end
 		when 2 #not working

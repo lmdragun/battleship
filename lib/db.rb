@@ -11,10 +11,11 @@ ActiveRecord::Base.establish_connection(
 class Game < ActiveRecord::Base
   has_many :players
   has_many :ships
+  has_many :turns
 
   def self.list_all_games
     Game.all.each do |g|
-      puts "Saved game: Game ##{g.id}, updated at #{g.updated_at}"
+      puts "Game ##{g.id}, updated at #{g.updated_at}, played by #{g.players.first.name}"
     end
   end
     def self.load_game
@@ -39,6 +40,11 @@ class Ship < ActiveRecord::Base
   validates :location, :presence => true
 end
 
+class Turn < ActiveRecord::Base
+  belongs_to :game, dependent: :destroy
+  validates :location, :presence => true
+end
+
 
 class CreateBattleShip < ActiveRecord::Migration
 
@@ -46,13 +52,12 @@ class CreateBattleShip < ActiveRecord::Migration
     track_players
     track_games
     track_ships
+    track_turns
   end
 
   def track_games
     create_table :games do |column|
       column.timestamps null: false
-      column.string :attempts
-      column.string :hits
     end
   end
 
@@ -70,6 +75,15 @@ class CreateBattleShip < ActiveRecord::Migration
         column.integer :game_id
         column.references :game
         column.string :location
+      end
+    end
+
+    def track_turns
+      create_table :turns do |column|
+        column.integer :game_id
+        column.references :game
+        column.string :location
+        column.boolean :hits
       end
     end
 
