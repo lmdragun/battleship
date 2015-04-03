@@ -77,6 +77,7 @@ while true
 		when 2
 			all_game = Game.list_all_games
 			game = Game.load_game
+			#turn game above into a method, populate with arrays created from the strings of ActiveRecord table information on hits and ships
 		when 3
 		when 4
 		when 5
