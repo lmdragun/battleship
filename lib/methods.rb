@@ -33,6 +33,7 @@ def board
 			puts "\e[36;44m#{@board[180..194].join(" ")}\e[0m"
 			puts "\e[36;44m#{@board[195..209].join(" ")}\e[0m"
 			puts "\e[36;44m#{@board[210..224].join(" ")}\e[0m"
+			#save ranges into array, loop through array
 	end
 
 def random_array_ship
@@ -67,4 +68,10 @@ def destroy
 	puts "\e[31m      /X\\\e[0m"
 	puts "\e[31mc----/   \\------>\e[0m"
 	sleep(1)
+end
+
+def empty_ocean
+	puts "\e[36m~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
+	puts "\e[36m ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
+	puts "\e[36m~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 end

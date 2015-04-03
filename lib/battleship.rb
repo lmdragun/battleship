@@ -1,7 +1,8 @@
 require_relative 'db'
 require_relative 'methods'
 require 'pry'
-
+11
+system("clear")
 puts
 puts "\e[4;1;31mLet's play Battleship!\e[0m\n"
 puts
@@ -51,6 +52,7 @@ while true
 							puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
 								puts "You've won!"
+								puts empty_ocean
 								break
 							else
 								puts "One more ship to go!"
@@ -67,6 +69,7 @@ while true
 								puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
 								puts "You've won!"
+								puts empty_ocean
 								break
 							else
 								puts "One more ship to go!"
