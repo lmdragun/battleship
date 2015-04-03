@@ -10,7 +10,7 @@ I began working through possible rspec tests and pseudo-code, then started writi
 
 User Stories available here: <a href="https://trello.com/b/f8XIUDdm/battleship">https://trello.com/b/f8XIUDdm/battleship</a>
 
-<h2>Issues<h2>
+<h2>Issues</h2>
 
 The original question of how to configure and populate the grid was the major issue, as there are various ways to go about doing it. Two dimensional arrays and an array of hashes were also options. Working with ActiveRecord in Ruby, and not Rails, was also an interesting experience.
 
