@@ -23,16 +23,14 @@ while true
 				#These arrays bring out the random ships random ships
 			ship1 = random_array_ship.first.first
 			ship2 = random_array_ship.last.first
+				#These save the ship locations in the database
 			game.ships.create(location: ship1)
-			# binding.pry
 			game.ships.create(location: ship2)
-			puts ship1
-			puts ship2
 			ship1_hits = []
 			ship2_hits = []
 			attempts = []
-			hit = 0
 
+				#the game starts
 			loop do
 				puts board
 				puts "Type in the location on the board you would like to attack. Example: A1."
@@ -76,7 +74,7 @@ while true
 						game.turns.create(hits: false, location: turn)
 					end
 			end
-		when 2 
+		when 2
 			all_game = Game.list_all_games
 			game = Game.load_game
 		when 3
