@@ -4,27 +4,35 @@ def list_all_games
 		puts Player.find_all_by_name "#{player_name}"
 end
 
+def menu
+	puts "Enter 1 to play a NEW game."
+	puts "Enter 2 to LOAD an old game."
+	puts "Enter 3 to see your score and hits."
+	puts "Enter 4 to delete an old game."
+	puts "Enter 5 to quit."
+end
+
 def board
 			@x = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"]
 			@y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 			@xy = @x.product(@y)
 			@board = @xy.map! {|xy| xy.join("")}
 
-			puts @board[0..14].join(" ")
-			puts @board[15..29].join(" ")
-			puts @board[30..44].join(" ")
-			puts @board[45..59].join(" ")
-			puts @board[60..74].join(" ")
-			puts @board[75..89].join(" ")
-			puts @board[90..104].join(" ")
-			puts @board[105..119].join(" ")
-			puts @board[120..134].join(" ")
-			puts @board[135..149].join(" ")
-			puts @board[150..164].join(" ")
-			puts @board[165..179].join(" ")
-			puts @board[180..194].join(" ")
-			puts @board[195..209].join(" ")
-			puts @board[210..224].join(" ")
+			puts "\e[36;44m#{@board[0..14].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[15..29].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[30..44].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[45..59].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[60..74].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[75..89].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[90..104].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[105..119].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[120..134].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[135..149].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[150..164].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[165..179].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[180..194].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[195..209].join(" ")}\e[0m"
+			puts "\e[36;44m#{@board[210..224].join(" ")}\e[0m"
 	end
 
 def random_array_ship
@@ -48,6 +56,7 @@ def random_array_ship
 end
 
 def destroy
+	system("clear")
 	puts "\e[31m You sunk my battleship!\e[0m"
 	puts "\e[31m _~-~-~-~-~_\e[0m"
 	puts "\e[31m/           \\\e[0m"
@@ -57,5 +66,5 @@ def destroy
 	puts " \e[31m   |    |\e[0m"
 	puts "\e[31m      /X\\\e[0m"
 	puts "\e[31mc----/   \\------>\e[0m"
-	sleeps(1)
+	sleep(1)
 end

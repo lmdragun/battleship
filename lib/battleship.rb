@@ -2,14 +2,12 @@ require_relative 'db'
 require_relative 'methods'
 require 'pry'
 
-puts "Let's play Battleship!\n"
+puts
+puts "\e[4;1;31mLet's play Battleship!\e[0m\n"
+puts
 
 while true
-	puts "Enter 1 to play a NEW game."
-	puts "Enter 2 to LOAD an old game."
-	puts "Enter 3 to see your score and hits."
-	puts "Enter 4 to delete an old game."
-	puts "Enter 5 to quit."
+	menu
 	user_input = gets().chomp().to_i
 
 	case user_input
@@ -29,7 +27,6 @@ while true
 			ship1_hits = []
 			ship2_hits = []
 			attempts = []
-
 				#the game starts
 			loop do
 				puts board
@@ -39,7 +36,8 @@ while true
 
 					if attempts.include?(turn) == true
 						puts "You've already tried that!"
-						sleep(1)
+						sleep(2)
+						system("clear")
 					elsif turn == "QUIT"
 						break
 					elsif ship1.include?(turn)
@@ -47,7 +45,8 @@ while true
 						game.turns.create(hits: true, location: turn)
 						ship1_hits << turn
 						attempts << turn
-						sleep(1)
+						sleep(2)
+						system("clear")
 						if ship1_hits.count == 5
 							puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -62,7 +61,8 @@ while true
 						game.turns.create(hits: true, location: turn)
 						ship2_hits << turn
 						attempts << turn
-						sleep(1)
+						sleep(2)
+						system("clear")
 						if ship2_hits.count == 5
 								puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -76,6 +76,8 @@ while true
 						puts "Nothing! Try again!"
 						game.turns.create(hits: false, location: turn)
 						attempts << turn
+						sleep(2)
+						system("clear")
 					end
 			end
 		when 2
@@ -83,6 +85,7 @@ while true
 			game = Game.load_game
 			#turn game above into a method, populate with arrays created from the strings of ActiveRecord table information on hits and ships
 		when 3
+			all_game = Game.list_all_games
 		when 4
 		when 5
 			puts "Goodbye!"
