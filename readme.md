@@ -1,5 +1,6 @@
 <h1>Battleship</h1>
 
+Find current edits in <a href="https://github.com/lmdragun/battleship/tree/stage2">Stage 2</a>.
 
 <h2>Setup</h2>
 CreateBattleShip.new in pry. Then run the game outside of pry.
