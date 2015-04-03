@@ -1,5 +1,24 @@
 <h1>Battleship</h1>
 
+
+                                     |__
+                                     |\/
+                                     ---
+                                     / | [
+                              !      | |||
+                            _/|     _/|-++'
+                        +  +--|    |--|--|_ |-
+                     { /|__|  |/\__|  |--- |||__/
+                    +---------------___[}-_===_.'____                 /\
+                ____`-' ||___-{]_| _[}-  |     |_[___\==--            \/   _
+ __..._____--==/___]_|__|_____________________________[___\==--____,------' .7
+|                                                                     BB-61/
+ \_________________________________________________________________________|
+  <small>(Matthew Bace)</small>
+
+<h2>Setup</h2>
+CreateBattleShip.new in pry. Then run the game outside of pry.
+
 <h2>Background</h2>
 
 This is the first Project for General Assembly's Web Development Immersive, fifth class. It was assigned and coded during our third week of class. There were the projects possible,  a personal finance app, a flash cards app, and this battleship app.
