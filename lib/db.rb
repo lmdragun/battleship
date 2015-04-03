@@ -18,16 +18,16 @@ class Game < ActiveRecord::Base
       puts "Game ##{g.id}, updated at #{g.updated_at}, played by #{g.players.first.name}"
     end
   end
+  
     def self.load_game
       puts "Please put the number that corresponds to the game you'd like to load."
       game_number = gets().chomp().to_i
       old_game = Game.find(game_number)
       old_game.turns.location.each do |t|
-        load_attempts = []
-        load_attempts << t
+        attempts = []
+        attempts << t
       end
       return attempts
-
     end
 
 end

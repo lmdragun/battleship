@@ -57,5 +57,5 @@ def destroy
 	puts " \e[31m   |    |\e[0m"
 	puts "\e[31m      /X\\\e[0m"
 	puts "\e[31mc----/   \\------>\e[0m"
-	sleeps(3)
+	sleeps(1)
 end

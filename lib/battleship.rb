@@ -39,6 +39,7 @@ while true
 
 					if attempts.include?(turn) == true
 						puts "You've already tried that!"
+						sleep(1)
 					elsif turn == "QUIT"
 						break
 					elsif ship1.include?(turn)
@@ -46,6 +47,7 @@ while true
 						game.turns.create(hits: true, location: turn)
 						ship1_hits << turn
 						attempts << turn
+						sleep(1)
 						if ship1_hits.count == 5
 							puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -60,6 +62,7 @@ while true
 						game.turns.create(hits: true, location: turn)
 						ship2_hits << turn
 						attempts << turn
+						sleep(1)
 						if ship2_hits.count == 5
 								puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -72,6 +75,7 @@ while true
 					elsif turn != ship1.include?(turn) && turn != ship2.include?(turn)
 						puts "Nothing! Try again!"
 						game.turns.create(hits: false, location: turn)
+						attempts << turn
 					end
 			end
 		when 2
