@@ -1,25 +1,3 @@
-# class Player < ActiveRecord::Base
-#   has_many :games
-#   validates :name, :presence => true
-# end
-#
-#
-# class Game < ActiveRecord::Base
-#   belongs_to :player
-# 	has_many :ships
-#   validates :timestamp, :turns, :presence => true
-# end
-#
-#
-# class Ship < ActiveRecord::Base
-#   belongs_to :player, dependent: :destroy
-#   validates :number, :location, :presence => true
-#
-# end
-
-
-
-
 def list_all_games
 	puts "What is your player name?"
 		player_name = gets().chomp().capitalize
@@ -79,4 +57,5 @@ def destroy
 	puts " \e[31m   |    |\e[0m"
 	puts "\e[31m      /X\\\e[0m"
 	puts "\e[31mc----/   \\------>\e[0m"
+	sleeps(3)
 end

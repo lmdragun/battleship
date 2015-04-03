@@ -21,8 +21,12 @@ class Game < ActiveRecord::Base
     def self.load_game
       puts "Please put the number that corresponds to the game you'd like to load."
       game_number = gets().chomp().to_i
-      puts Game.find(game_number)
-      return Game.find(game_number)
+      old_game = Game.find(game_number)
+      old_game.turns.location.each do |t|
+        load_attempts = []
+        load_attempts << t
+      end
+      return attempts
 
     end
 
@@ -94,6 +98,3 @@ class CreateBattleShip < ActiveRecord::Migration
     end
 
 end
-
-
-# binding.pry

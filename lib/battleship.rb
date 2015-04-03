@@ -31,7 +31,6 @@ while true
 			ship1_hits = []
 			ship2_hits = []
 			attempts = []
-			#game.turns
 			hit = 0
 
 			loop do
@@ -39,19 +38,16 @@ while true
 				puts "Type in the location on the board you would like to attack. Example: A1."
 				puts "Or type Quit to exit."
 				turn = gets().chomp().upcase
-				# puts turn
 
 					if attempts.include?(turn) == true
 						puts "You've already tried that!"
-						# sleep(3)
 					elsif turn == "QUIT"
 						break
-					elsif attempts.include?(turn)
+					elsif ship1.include?(turn)
 						puts "Hit!"
 						game.turns.create(hits: true, location: turn)
 						ship1_hits << turn
 						attempts << turn
-						# sleep(3)
 						if ship1_hits.count == 5
 							puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -66,7 +62,6 @@ while true
 						game.turns.create(hits: true, location: turn)
 						ship2_hits << turn
 						attempts << turn
-						# sleep(3)
 						if ship2_hits.count == 5
 								puts destroy
 							if ship1_hits.count == 5 && ship2_hits.count == 5
@@ -79,13 +74,11 @@ while true
 					elsif turn != ship1.include?(turn) && turn != ship2.include?(turn)
 						puts "Nothing! Try again!"
 						game.turns.create(hits: false, location: turn)
-						# sleep(3)
 					end
 			end
-		when 2 #not working
+		when 2 
 			all_game = Game.list_all_games
 			game = Game.load_game
-#one method to list, one method for user selection, return game that
 		when 3
 		when 4
 		when 5
@@ -95,4 +88,3 @@ while true
 			puts "That is not a valid choice."
 		end
 	end
-# binding.pry
