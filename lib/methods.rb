@@ -18,11 +18,7 @@
 # end
 
 
-def list_all_players
-	Player.all each do |p|
-		puts "Saved player: #{p.name}"
-	end
-end
+
 
 def list_all_games
 	puts "What is your player name?"
@@ -71,4 +67,16 @@ def random_array_ship
 			ship_2.replace(ship_arrays.sample(1))
 		end
 		return [ship_1, ship_2]
+end
+
+def destroy
+	puts "\e[31m You sunk my battleship!\e[0m"
+	puts "\e[31m _~-~-~-~-~_\e[0m"
+	puts "\e[31m/           \\\e[0m"
+	puts "\e[31m(            )\e[0m"
+	puts "\e[31m -          -\e[0m"
+	puts "\e[31m  (        )\e[0m"
+	puts " \e[31m   |    |\e[0m"
+	puts "\e[31m      /X\\\e[0m"
+	puts "\e[31mc----/   \\------>\e[0m"
 end
